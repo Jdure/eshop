@@ -4,9 +4,9 @@ const { productId, productQty, productPrice } = Astro.props;
 ---
 
 <astro-add
-  data-productId={productId}
-  data-productQty={productQty}
-  data-productPrice={productPrice}
+  data-product_id={productId}
+  data-product_qty={productQty}
+  data-product_price={productPrice}
 >
   <button type="button" class="addCartBtn">Add to cart</button>
 </astro-add>
@@ -16,15 +16,15 @@ const { productId, productQty, productPrice } = Astro.props;
 
   class AstroButton extends HTMLElement {
     connectedCallback() {
+      const productId = this.dataset.product_id as string;
+      const productQty = this.dataset.product_qty as string;
+      const productPrice = this.dataset.product_price as string;
       const addCartBtn = this.querySelector("button") as HTMLElement;
-      const productId = this.dataset.productId as string;
-      const productQty = this.dataset.productQty as string;
-      const productPrice = this.dataset.productPrice as string;
 
-      addCartBtn.addEventListener("click", async (e) => {
+      addCartBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(productId);
-        // CreateCart(productId, productQty, productPrice);
+        console.log(productId, productPrice, productQty);
+        CreateCart(productId, productQty, productPrice);
       });
     }
   }

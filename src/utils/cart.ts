@@ -11,13 +11,20 @@ interface Cart {
 export const CreateCart = async (
   productId: string,
   productQty: string | number,
-  productPrice: string
+  productPrice: string | number
 ) => {
+  let newCart;
   const data = {
     product_id: productId,
     quantity: productQty,
     price: productPrice,
   };
-  console.log(data);
-  const record = await pb.collection("cart").create(data);
+  try {
+    newCart = await pb.collection("cart").create(data);
+    console.log(newCart);
+  } catch (error) {
+    console.log(error);
+  }
+
+  return newCart;
 };
