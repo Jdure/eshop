@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Cart">
+    <h1>Cart</h1>
+    <div id="items" class="flex flex-col">
+        <div>
+            <img src="" alt=""/>
+            <p>title</p>
+            <p>price</p>
+            <div class="flex flex-row">
+            <button>-</button>
+            <p>quantity</p>
+            <button>+</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="flex flex-row">
+            <button>Checkout</button>
+            <a href="/src/pages/index.astro">Keep Shopping</a>
+        </div>
+    </div>
+</Layout>

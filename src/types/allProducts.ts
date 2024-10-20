@@ -1,39 +1,40 @@
 export interface AllProducts {
-    data: Data
-    extensions: Extensions
+  data: Data;
+  extensions: Extensions;
 }
 
 export interface Data {
-    products: Products
+  products: Products;
 }
 
 export interface Products {
-    edges: Edge[]
+  edges: Edge[];
 }
 
 export interface Edge {
-    node: Node
+  node: Node;
 }
 
 export interface Node {
-    id: string
-    name: string
-    price: string
-    image: Image
-    description: string
-    slug: string
+  id: string;
+  name: string;
+  price: string;
+  image: Image;
+  description: string;
+  slug: string;
+  collectionId: string;
 }
 
 export interface Image {
-    sourceUrl: string
-    title: string
+  sourceUrl: string;
+  title: string;
 }
 
 export interface Extensions {
-    debug: Debug[]
+  debug: Debug[];
 }
 
 export interface Debug {
-    type: string
-    message: string
+  type: string;
+  message: string;
 }

@@ -1,0 +1,32 @@
+---
+import { CreateCart } from "../utils/cart";
+const { productId, productQty, productPrice } = Astro.props;
+---
+
+<astro-add
+  data-productId={productId}
+  data-productQty={productQty}
+  data-productPrice={productPrice}
+>
+  <button type="button" class="addCartBtn">Add to cart</button>
+</astro-add>
+
+<script>
+  import { CreateCart } from "../utils/cart";
+
+  class AstroButton extends HTMLElement {
+    connectedCallback() {
+      const addCartBtn = this.querySelector("button") as HTMLElement;
+      const productId = this.dataset.productId as string;
+      const productQty = this.dataset.productQty as string;
+      const productPrice = this.dataset.productPrice as string;
+
+      addCartBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        console.log(productId);
+        // CreateCart(productId, productQty, productPrice);
+      });
+    }
+  }
+  customElements.define("astro-add", AstroButton);
+</script>
