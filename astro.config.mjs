@@ -8,6 +8,6 @@ export default defineConfig({
   adapter: nodejs({
     mode: "standalone",
   }),
-  output: "server",
+  output: "hybrid",
   integrations: [react(), tailwind()],
 });

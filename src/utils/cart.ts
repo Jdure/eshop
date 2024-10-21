@@ -1,6 +1,4 @@
-import PocketBase from "pocketbase";
-
-const pb = new PocketBase(import.meta.env.PB_TEMP_URL);
+import { pb } from "./pb";
 
 interface Cart {
   id: string;
@@ -10,21 +8,28 @@ interface Cart {
 
 export const CreateCart = async (
   productId: string,
-  productQty: string | number,
-  productPrice: string | number
+  productQty: number,
+  productPrice: number
 ) => {
-  let newCart;
   const data = {
     product_id: productId,
     quantity: productQty,
     price: productPrice,
   };
   try {
-    newCart = await pb.collection("cart").create(data);
-    console.log(newCart);
+    const record = await pb.collection("cart").create(data, {});
   } catch (error) {
     console.log(error);
   }
+};
 
-  return newCart;
+export const Todo = async (title: string) => {
+  const data = {
+    title: title,
+  };
+  try {
+    const newTodo = await pb.collection("todo").create(data);
+  } catch (error) {
+    console.log(error);
+  }
 };
